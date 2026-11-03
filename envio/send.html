@@ -1,0 +1,6 @@
+<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><title>enviando</title><body>enviando...</body>
+<script>
+(async()=>{const p=new URLSearchParams(location.search);const folder=p.get('f');const names=p.get('n').split(',');const files=[];
+for(const n of names){const r=await fetch(folder+'/'+n);const b=await r.arrayBuffer();files.push({name:n,type:n.endsWith('.mp4')?'video/mp4':'image/jpeg',buf:b});}
+if(window.opener){window.opener.postMessage({tbm:1,files},'https://business.facebook.com',files.map(f=>f.buf));document.body.textContent='ok';setTimeout(()=>window.close(),800);}else{document.body.textContent='sem opener';}})();
+</script>
